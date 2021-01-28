@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  ServicePrefix:
+    Type: String
+    Description: "The prefix used for Frankie Rand resources"
+    Default: "frankie-rand-alexa-skill"
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Join ["", [Ref: "ServicePrefix", "-lambda" ]]
+    Description: S3 bucket to host Lambda service code
