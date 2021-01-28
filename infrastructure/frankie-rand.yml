@@ -4,7 +4,7 @@ Parameters:
   ServicePrefix:
     Type: String
     Description: "The prefix used for Frankie Rand resources"
-    ParameterProperty: "frankie-rand-alexa-skill"
+    Default: "frankie-rand-alexa-skill"
 
 Resources:
   S3Bucket:
