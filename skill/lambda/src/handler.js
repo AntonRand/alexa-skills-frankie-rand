@@ -1,7 +1,8 @@
-const handler = (event, context, callback) => {
-    console.log('Frankie Rand lambda was invoked.');
-}
+const handler = () => {
+  // eslint-disable-next-line no-console
+  console.log('Frankie Rand lambda was invoked.');
+};
 
 export default {
-    handler,
-}
+  handler,
+};
