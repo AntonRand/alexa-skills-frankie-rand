@@ -47,5 +47,5 @@ Resources:
         S3Key: lambda-handler.zip
       Handler: build/handler.handler
       Runtime: nodejs12.x
-      Role: AWSLambdaBasicExecutionRole
+      Role: !Ref LambdaExecutionRole
     Description: Lambda function to handle Alexa request
