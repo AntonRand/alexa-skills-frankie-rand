@@ -7,8 +7,45 @@ Parameters:
     Default: "frankie-rand-alexa-skill"
 
 Resources:
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument: Json
+      Description: Lambda execution role for Frankie Rand skill
+      Policies:
+        - PolicyName: create-log-group-policy
+            PolicyDocument:
+              Version: 2012-10-17
+              Statement:
+                - Effect: Allow
+                  Action: 'logs:CreateLogGroup'
+                  Resource: !Join [":", ["arn:aws:logs", !Ref AWS::Region, !Ref AWS::AccountId, "*" ]]
+        - PolicyName: put-logs-policy
+            PolicyDocument:
+              Version: 2012-10-17
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - 'logs:CreateLogStream'
+                    - 'logs:PutLogEvents'
+                  Resource: !Join [":", ["arn:aws:logs", !Ref AWS::Region, !Ref AWS::AccountId, "*" ]]
+      RoleName: !Join ["", [Ref: "ServicePrefix", "-lambda-execution-role" ]]
+
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Join ["", [Ref: "ServicePrefix", "-lambda" ]]
     Description: S3 bucket to host Lambda service code
+
+  LambdaHandler:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Join ["", [Ref: "ServicePrefix", "-lambda-handler" ]]
+      Code:
+        S3Bucket:
+          !Ref S3Bucket
+        S3Key: lambda-handler.zip
+      Handler: build/handler.handler
+      Runtime: nodejs12.x
+      Role: AWSLambdaBasicExecutionRole
+    Description: Lambda function to handle Alexa request
