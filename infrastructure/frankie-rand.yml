@@ -53,7 +53,7 @@ Resources:
         S3Bucket:
           !Ref S3Bucket
         S3Key: lambda-handler.zip
-      Handler: build/handler.handler
+      Handler: build/handler.default
       Runtime: nodejs12.x
       Role:
         !GetAtt LambdaExecutionRole.Arn
