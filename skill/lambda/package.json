@@ -1,0 +1,33 @@
+{
+  "name": "frankie-rand-skill",
+  "version": "1.0.0",
+  "description": "Frankie Rand Alexa Skill",
+  "main": "handler.js",
+  "scripts": {
+    "build": "npm run compile && npm run lint",
+    "compile": "babel src --out-dir build --source-maps --copy-files",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.6.0",
+    "core-js": "^3.3.3",
+    "regenerator-runtime": "^0.13.3",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "babel-plugin-source-map-support": "^2.1.1",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-immutable": "^1.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.9.0",
+    "jest-when": "^2.7.2"
+  },
+  "author": "Anton Rand",
+  "license": "ISC"
+}
